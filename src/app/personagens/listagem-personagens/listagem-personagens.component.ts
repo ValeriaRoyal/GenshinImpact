@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
-import { FilmesService } from 'src/app/core/filmes.service';
-import { Filme } from 'src/app/shared/models/filme';
+import { PersonagensService } from 'src/app/core/personagens.service';
+import { Personagem } from 'src/app/shared/models/personagem';
 import { ConfigPrams } from 'src/app/shared/models/config-prams';
 
 @Component({
-  selector: 'dio-listagem-filmes',
-  templateUrl: './listagem-filmes.component.html',
-  styleUrls: ['./listagem-filmes.component.scss']
+  selector: 'dio-listagem-personagens',
+  templateUrl: './listagem-personagens.component.html',
+  styleUrls: ['./listagem-personagens.component.scss']
 })
 export class ListagemFilmesComponent implements OnInit {
   readonly semFoto = 'https://www.termoparts.com.br/wp-content/uploads/2017/10/no-image.jpg';
@@ -18,11 +18,11 @@ export class ListagemFilmesComponent implements OnInit {
     pagina: 0,
     limite: 4
   };
-  filmes: Filme[] = [];
+  personagens: Personagem[] = [];
   filtrosListagem: FormGroup;
   generos: Array<string>;
 
-  constructor(private filmesService: FilmesService,
+  constructor(private filmesService: PersonagensService,
               private fb: FormBuilder,
               private router: Router) { }
 
@@ -46,26 +46,26 @@ export class ListagemFilmesComponent implements OnInit {
 
     this.generos = ['Ação', 'Romance', 'Aventura', 'Terror', 'Ficção cientifica', 'Comédia', 'Aventura', 'Drama'];
 
-    this.listarFilmes();
+    this.listarPersonagens();
   }
 
   onScroll(): void {
-    this.listarFilmes();
+    this.listarPersonagens();
   }
 
   abrir(id: number): void {
-    this.router.navigateByUrl('/filmes/' + id);
+    this.router.navigateByUrl('/personagens/' + id);
   }
 
-  private listarFilmes(): void {
+  private listarPersonagens(): void {
     this.config.pagina++;
     this.filmesService.listar(this.config)
-      .subscribe((filmes: Filme[]) => this.filmes.push(...filmes));
+      .subscribe((personagens: Personagem[]) => this.personagens.push(...personagens));
   }
 
   private resetarConsulta(): void {
     this.config.pagina = 0;
-    this.filmes = [];
-    this.listarFilmes();
+    this.personagens = [];
+    this.listarPersonagens();
   }
 }

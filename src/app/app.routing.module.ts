@@ -1,45 +1,45 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FilmesModule } from './filmes/filmes.module';
-import { CadastroFilmesComponent } from './filmes/cadastro-filmes/cadastro-filmes.component';
-import { ListagemFilmesComponent } from './filmes/listagem-filmes/listagem-filmes.component';
-import { VisualizarFilmesComponent } from './filmes/visualizar-filmes/visualizar-filmes.component';
+import { FilmesModule } from './personagens/personagens.module';
+import { CadastroPersonagensComponent } from './personagens/cadastro-personagens/cadastro-personagens.component';
+import { ListagemPersonagensComponent } from './personagens/listagem-personagens/listagem-personagens.component';
+import { VisualizarPersonagensComponent } from './personagens/visualizar-personagens/visualizar-personagens.component';
 
 const routes: Routes = [
 
   {
       path: '',
-      redirectTo: 'filmes',
+      redirectTo: 'personagens',
       pathMatch: 'full'
   },
   {
-    path: 'filmes',
+    path: 'personagens',
     children: [
       {
         path: '',
-        component: ListagemFilmesComponent
+        component: ListagemPersonagensComponent
       },
       {
         path: 'cadastro',
         children: [
           {
             path: '',
-            component: CadastroFilmesComponent
+            component: CadastroPersonagensComponent
           },
           {
             path: ':id',
-            component: CadastroFilmesComponent
+            component: CadastroPersonagensComponent
           }
         ]
       },
       {
         path: ':id',
-        component: VisualizarFilmesComponent,
+        component: VisualizarPersonagensComponent,
         pathMatch: 'full'
       }
     ]
   },
-  { path: '**', redirectTo: 'filmes' },
+  { path: '**', redirectTo: 'personagens' },
 
 ];
 

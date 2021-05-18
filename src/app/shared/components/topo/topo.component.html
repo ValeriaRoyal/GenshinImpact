@@ -2,9 +2,9 @@
   <mat-sidenav #sidenav class="sidenav" fixedInViewport="true" >
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list (click)="closeSideNav()">
-      <a mat-list-item [routerLink]="['/filmes']">Inicial</a>
+      <a mat-list-item [routerLink]="['/personagens']">Inicial</a>
       <mat-divider></mat-divider>
-      <a mat-list-item [routerLink]="['/filmes/cadastro']">Cadastrar novo Filme</a>
+      <a mat-list-item [routerLink]="['/personagens/cadastro']">Cadastrar novo Personagem</a>
       <mat-divider></mat-divider>
     </mat-nav-list>
   </mat-sidenav>
@@ -13,7 +13,7 @@
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="openSideNav()">
         <mat-icon aria-label="Side nav toggle icon"> menu</mat-icon>
       </button>
-      <span>Minha Lista de Filmes</span>
+      <span>Minha Lista de Personagens</span>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
       </button>

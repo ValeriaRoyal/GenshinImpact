@@ -1,0 +1,18 @@
+<mat-list *ngIf="personagem; else semRegistro">
+  <mat-list-item> Nome: {{personagem.titulo}} </mat-list-item>
+  <mat-list-item> Data de lançamento: {{personagem.dtLancamento | date: 'dd/MM/yyyy' }} </mat-list-item>
+  <mat-list-item> Gênero: {{personagem.genero}} </mat-list-item>
+  <mat-list-item class="quebrar-linha"> Descrição: {{personagem.descricao}} </mat-list-item>
+  <mat-list-item> Nota: <a [href]="personagem.url" target="_blank"> {{personagem.nota}}</a> </mat-list-item>
+  <img mat-card-image [src]="personagem.urlFoto || semFoto" >
+</mat-list>
+<mat-card>
+  <mat-card-actions>
+    <button color="accent" mat-raised-button (click)="editar()">Editar</button>
+    <button color="warn" mat-raised-button (click)="excluir()">Excluir</button>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #semRegistro>
+  <h1 class="full-width main-div">Nenhum registro encontrado!</h1>
+</ng-template>

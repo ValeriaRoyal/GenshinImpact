@@ -3,17 +3,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ValidarCamposService } from 'src/app/shared/components/campos/validar-campos.service';
-import { Filme } from 'src/app/shared/models/filme';
-import { FilmesService } from 'src/app/core/filmes.service';
+import { Personagem } from 'src/app/shared/models/personagem';
+import { PersonagensService } from 'src/app/core/personagens.service';
 import { AlertaComponent } from 'src/app/shared/components/alerta/alerta.component';
 import { Alerta } from 'src/app/shared/models/alerta';
 
 @Component({
-  selector: 'dio-cadastro-filmes',
-  templateUrl: './cadastro-filmes.component.html',
-  styleUrls: ['./cadastro-filmes.component.scss']
+  selector: 'dio-cadastro-personagens',
+  templateUrl: './cadastro-personagens.component.html',
+  styleUrls: ['./cadastro-personagens.component.scss']
 })
-export class CadastroFilmesComponent implements OnInit {
+export class CadastroPersonagensComponent implements OnInit {
 
   id: number;
   cadastro: FormGroup;
@@ -22,7 +22,7 @@ export class CadastroFilmesComponent implements OnInit {
   constructor(public validacao: ValidarCamposService,
               public dialog: MatDialog,
               private fb: FormBuilder,
-              private filmeService: FilmesService,
+              private personagemService: PersonagensService,
               private router: Router,
               private activatedRoute: ActivatedRoute) { }
 
@@ -33,13 +33,13 @@ export class CadastroFilmesComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.filmeService.visualizar(this.id)
-        .subscribe((filme: Filme) => this.criarFormulario(filme));
+      this.personagemService.visualizar(this.id)
+        .subscribe((personagem: Personagem) => this.criarFormulario(personagem));
     } else {
-      this.criarFormulario(this.criarFilmeEmBranco());
+      this.criarFormulario(this.criarPersonagemEmBranco());
     }
 
-    this.generos = ['Ação', 'Romance', 'Aventura', 'Terror', 'Ficção cientifica', 'Comédia', 'Aventura', 'Drama'];
+    this.elementos = ['Pyro', 'Hydro', 'Dendro', 'Electro', 'Anemo', 'Cryo', 'Geo'];
 
   }
 
@@ -49,12 +49,12 @@ export class CadastroFilmesComponent implements OnInit {
       return;
     }
 
-    const filme = this.cadastro.getRawValue() as Filme;
+    const personagem = this.cadastro.getRawValue() as Personagem;
     if (this.id) {
-      filme.id = this.id;
-      this.editar(filme);
+      personagem.id = this.id;
+      this.editar(personagem);
     } else {
-      this.salvar(filme);
+      this.salvar(personagem);
     }
   }
 
@@ -62,37 +62,37 @@ export class CadastroFilmesComponent implements OnInit {
     this.cadastro.reset();
   }
 
-  private criarFormulario(filme: Filme): void {
+  private criarFormulario(personagem: Personagem): void {
     this.cadastro = this.fb.group({
-      titulo: [filme.titulo, [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
-      urlFoto: [filme.urlFoto, [Validators.minLength(10)]],
-      dtLancamento: [filme.dtLancamento, [Validators.required]],
-      descricao: [filme.descricao],
-      nota: [filme.nota, [Validators.required, Validators.min(0), Validators.max(10)]],
-      urlIMDb: [filme.urlIMDb, [Validators.minLength(10)]],
-      genero: [filme.genero, [Validators.required]]
+      nome: [personagem.nome, [Validators.required, Validators.minLength(2), Validators.maxLength(256)]],
+      urlFoto: [personagem.urlFoto, [Validators.minLength(10)]],
+      dtLancamento: [personagem.dtLancamento, [Validators.required]],
+      descricao: [personagem.descricao],
+      nota: [personagem.nota, [Validators.required, Validators.min(0), Validators.max(10)]],
+      url: [personagem.url, [Validators.minLength(10)]],
+      elemento: [personagem.elemento, [Validators.required]]
     });
   }
 
-  private criarFilmeEmBranco(): Filme {
+  private criarFilmeEmBranco(): Personagem {
     return {
       id: null,
-      titulo: null,
+      nome: null,
       dtLancamento: null,
       urlFoto: null,
       descricao: null,
       nota: null,
-      urlImdb: null,
-      genero: null
-    } as Filme;
+      url: null,
+      elemento: null
+    } as Personagem;
   }
 
-  private salvar(filme: Filme): void {
-    this.filmeService.salvar(filme).subscribe(() => {
+  private salvar(personagem: Personagem): void {
+    this.personagemService.salvar(personagem).subscribe(() => {
       const config = {
         data: {
           btnSucesso: 'Ir para a listagem',
-          btnCancelar: 'Cadastrar um novo filme',
+          btnCancelar: 'Cadastrar um novo personagem',
           corBtnCancelar: 'primary',
           possuirBtnFechar: true
         } as Alerta
@@ -119,8 +119,8 @@ export class CadastroFilmesComponent implements OnInit {
     });
   }
 
-  private editar(filme: Filme): void {
-    this.filmeService.editar(filme).subscribe(() => {
+  private editar(personagem: Personagem): void {
+    this.personagemService.editar(personagem).subscribe(() => {
       const config = {
         data: {
           descricao: 'Seu registro foi atualizado com sucesso!',
@@ -128,7 +128,7 @@ export class CadastroFilmesComponent implements OnInit {
         } as Alerta
       };
       const dialogRef = this.dialog.open(AlertaComponent, config);
-      dialogRef.afterClosed().subscribe(() => this.router.navigateByUrl('filmes'));
+      dialogRef.afterClosed().subscribe(() => this.router.navigateByUrl('personagens'));
     },
     () => {
       const config = {

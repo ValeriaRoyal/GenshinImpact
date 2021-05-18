@@ -1,10 +1,10 @@
-export interface Filme {
+export interface Personagem {
   id?: number;
-  titulo: string;
+  nome: string;
   urlFoto?: string;
   dtLancamento: Date;
   descricao?: string;
   nota: number;
-  urlIMDb?: string;
-  genero: string;
+  url?: string;
+  elemento: string;
 }

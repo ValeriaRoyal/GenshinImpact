@@ -10,7 +10,7 @@ import { Alerta } from '../../models/alerta';
 export class AlertaComponent implements OnInit {
 
   alerta = {
-    titulo: 'Sucesso!',
+    nome: 'Sucesso!',
     descricao: 'Seu registro foi cadastrado com sucesso!',
     btnSucesso: 'OK',
     btnCancelar: 'Cancelar',
@@ -24,7 +24,7 @@ export class AlertaComponent implements OnInit {
 
   ngOnInit() {
     if (this.data) {
-      this.alerta.titulo = this.data.titulo || this.alerta.titulo;
+      this.alerta.nome = this.data.nome || this.alerta.nome;
       this.alerta.descricao = this.data.descricao || this.alerta.descricao;
       this.alerta.btnSucesso = this.data.btnSucesso || this.alerta.btnSucesso;
       this.alerta.btnCancelar = this.data.btnCancelar || this.alerta.btnCancelar;

@@ -9,7 +9,7 @@ import { ValidarCamposService } from '../validar-campos.service';
 })
 export class InputTextComponent {
 
-  @Input() titulo: string;
+  @Input() nome: string;
   @Input() formGroup: FormGroup;
   @Input() controlName: string;
 
