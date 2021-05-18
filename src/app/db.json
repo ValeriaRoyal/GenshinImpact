@@ -1,0 +1,34 @@
+{
+    "personagens": [
+      {
+        "id": 1,
+        "nome": "Jean Gunnhildr",
+        "urlFoto": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Character_Jean_Portrait.png/revision/latest/scale-to-width-down/310?cb=20200916180808",
+        "dtLancamento": "2020-07-28T03:00:00.000Z",
+        "descricao": "As the Acting Grand Master of the Knights, Jean has always been devoted to her duties and maintaining peace in Mondstadt. She had taken precautions long before the onset of Stormterror's assault, and she will guard Mondstadt with her life as always.",
+        "nota": 5,
+        "urlIMDb": "https://genshin-impact.fandom.com/wiki/Jean",
+        "elemento": "Anemo"
+      },
+      {
+        "id": 2,
+        "nome": "Amber",
+        "urlFoto": "https://static.wikia.nocookie.net/gensin-impact/images/0/00/Character_Amber_Portrait.png/revision/latest/scale-to-width-down/303?cb=20200914160851",
+        "dtLancamento": "2020-07-28T03:00:00.000Z",
+        "descricao": "A perky, straightforward girl, who is also the only Outrider of the Knights of Favonius. Her amazing mastery of the glider has made her a three-time winner of the Gliding Championship in Mondstadt. As a rising star within the Knights of Favonius, Amber is always ready for any challenging tasks.",
+        "nota": 4,
+        "urlIMDb": "https://genshin-impact.fandom.com/wiki/Amber",
+        "elemento": "Pyro"
+      },
+      {
+        "id": 3,
+        "nome": "Lisa Minci",
+        "urlFoto": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Character_Lisa_Portrait.png/revision/latest/scale-to-width-down/251?cb=20200916171314",
+        "dtLancamento": "2020-07-28T03:00:00.000Z",
+        "descricao": "She is an intellectual witch who can never get enough naps. As the Librarian of the Knights of Favonius, Lisa is smart in that she always knows exactly what to do with whatever troubles her. As much as she loves her sleep, she still manages to keep everything under control in a calm, composed manner.",
+        "nota": 4,
+        "urlIMDb": "https://genshin-impact.fandom.com/wiki/Lisa",
+        "elemento": "Electro"
+      }
+    ]
+  }
